@@ -1,339 +1,236 @@
-# 📊 Data Analytics Project
+# 🪔 Diwali Sales Analysis
 
-## Overview
+## 📌 Overview
 
-This project demonstrates an end-to-end **data analytics workflow**, starting from data loading and exploratory analysis in Python to SQL-based analysis, Power BI dashboard development, and business reporting.
+This project focuses on analyzing **Diwali sales data** to understand customer purchasing behavior, identify high-performing customer segments, and generate actionable business insights.
 
-The objective is to transform raw data into meaningful insights that can support **data-driven business decisions**.
+The analysis was performed using **Python, Pandas, NumPy, Matplotlib, and Seaborn**. The dataset was cleaned and explored through various demographic, geographic, occupational, and product-level analyses.
 
-### Key Areas Covered
-
-* Data loading and exploration using Python
-* Exploratory Data Analysis (EDA)
-* Data cleaning and preprocessing
-* SQL analysis using MySQL
-* Interactive dashboard development using Power BI
-* Business insights and recommendations
-* Final analytical report
+The primary objective is to identify **which customer segments and product categories contribute most to sales**, helping businesses improve marketing and sales strategies.
 
 ---
 
-## 📁 Dataset
+## 🎯 Business Objective
 
-The project uses a structured dataset containing relevant business/customer/transaction-level information.
+The main objective of this project is to answer questions such as:
 
-The dataset was first loaded into Python for understanding its:
+* Who are the major buyers during the Diwali sales period?
+* Which age group contributes the most to sales?
+* Which states generate the highest sales?
+* How does marital status relate to purchasing behavior?
+* Which occupations have the highest number of buyers and sales?
+* Which product categories are most popular?
+* Which customer segment should businesses target for future campaigns?
 
-* Structure and dimensions
-* Data types
-* Missing values
-* Duplicate records
-* Outliers
-* Numerical and categorical variables
+---
+
+## 📂 Dataset
+
+The project uses the **Diwali Sales Data** dataset.
+
+The dataset contains customer, order, demographic, geographic, occupational, and product information.
+
+### Key attributes include:
+
+* Gender
+* Age Group
+* State
+* Marital Status
+* Occupation
+* Product Category
+* Orders
+* Amount
+
+The dataset was loaded into a Pandas DataFrame and inspected before performing the analysis.
 
 ---
 
 ## 🛠️ Tools & Technologies
 
-| Tool                     | Purpose                                   |
-| ------------------------ | ----------------------------------------- |
-| **Python**               | Data loading, cleaning and EDA            |
-| **Pandas**               | Data manipulation and preprocessing       |
-| **NumPy**                | Numerical analysis                        |
-| **Matplotlib / Seaborn** | Data visualization                        |
-| **MySQL**                | SQL-based data analysis                   |
-| **Power BI**             | Interactive dashboard                     |
-| **Excel / CSV**          | Data storage and initial inspection       |
-| **Jupyter Notebook**     | Python-based analysis                     |
-| **GitHub**               | Project documentation and version control |
+| Tool / Technology    | Purpose                        |
+| -------------------- | ------------------------------ |
+| **Python**           | Data analysis                  |
+| **Pandas**           | Data manipulation and cleaning |
+| **NumPy**            | Numerical operations           |
+| **Matplotlib**       | Data visualization             |
+| **Seaborn**          | Statistical visualization      |
+| **Jupyter Notebook** | Analysis environment           |
 
 ---
 
 ## 🔄 Project Workflow
 
 ```text
-Raw Dataset
-     ↓
-Load Data in Python
-     ↓
-Data Exploration
-     ↓
-Data Cleaning & Preprocessing
-     ↓
+Raw Diwali Sales Dataset
+          ↓
+     Data Loading
+          ↓
+   Data Exploration
+          ↓
+     Data Cleaning
+          ↓
 Exploratory Data Analysis
-     ↓
-Load Data into MySQL
-     ↓
-SQL Analysis
-     ↓
-Power BI Dashboard
-     ↓
-Business Insights
-     ↓
-Final Report & Recommendations
+          ↓
+ Customer Segmentation
+          ↓
+   Sales Analysis
+          ↓
+ Business Insights
+          ↓
+    Conclusion
 ```
 
 ---
 
-## 🚀 Steps Performed
+## 🔍 Data Cleaning & Preprocessing
 
-### 1. Data Loading
+The dataset was inspected and cleaned before performing the analysis.
 
-The dataset was imported into Python using Pandas.
+### Steps performed:
 
-```python
-import pandas as pd
-
-df = pd.read_csv("dataset.csv")
-
-print(df.head())
-print(df.shape)
-print(df.info())
-```
-
-The initial analysis focused on understanding the dataset structure and identifying potential data-quality issues.
-
----
-
-### 2. Exploratory Data Analysis
-
-EDA was performed to identify patterns, trends, distributions and relationships within the data.
-
-Key activities included:
-
-* Checking dataset dimensions
-* Examining data types
-* Descriptive statistics
-* Analyzing categorical variables
-* Analyzing numerical variables
-* Identifying trends and patterns
-* Creating visualizations
-* Detecting potential outliers
-
----
-
-### 3. Data Cleaning
-
-The dataset was cleaned and prepared for further analysis.
-
-Major preprocessing steps included:
-
-* Handling missing values
-* Removing duplicate records
-* Correcting data types
-* Standardizing column values
-* Handling inconsistent data
-* Creating required calculated columns
-* Checking for outliers where appropriate
-
-The cleaned dataset was then used for SQL analysis and dashboard development.
-
----
-
-### 4. MySQL Analysis
-
-The cleaned data was imported into **MySQL Server** for structured querying and analysis.
-
-SQL queries were used to answer important business questions such as:
-
-* What are the top-performing categories/products?
-* Which customers or regions generate the most revenue?
-* What are the monthly/annual sales trends?
-* Which segments have the highest performance?
-* What factors are associated with higher sales?
-* Which areas require business attention?
+* Checked the dataset dimensions and columns
+* Examined data types and statistical summaries
+* Checked for duplicate records
+* Removed duplicate records
+* Checked for missing/null values
+* Removed unnecessary columns such as `Status` and `unnamed1`
+* Removed rows containing missing values
+* Prepared the cleaned dataset for exploratory analysis
 
 Example:
 
-```sql
-SELECT
-    category,
-    SUM(sales_amount) AS total_sales
-FROM sales
-GROUP BY category
-ORDER BY total_sales DESC;
-```
+```python
+df.drop_duplicates(inplace=True)
 
-SQL concepts used include:
+df.drop(["Status", "unnamed1"], axis=1, inplace=True)
 
-* `SELECT`
-* `WHERE`
-* `GROUP BY`
-* `HAVING`
-* `ORDER BY`
-* Aggregate functions
-* `JOIN`
-* Subqueries
-* Window functions
-
----
-
-## 📊 Power BI Dashboard
-
-An interactive Power BI dashboard was developed to present the key findings in an easy-to-understand format.
-
-### Dashboard Components
-
-The dashboard includes relevant KPIs, charts and filters such as:
-
-* Total Sales
-* Total Customers
-* Number of Orders
-* Average Order Value
-* Sales by Category
-* Sales by Region
-* Monthly/Yearly Trends
-* Top-performing Products
-* Customer/Business Segments
-
-### Dashboard Features
-
-* Interactive filters and slicers
-* KPI cards
-* Bar and column charts
-* Line charts
-* Category/segment analysis
-* Trend analysis
-* Drill-down where applicable
-
-> 📌 **Add your Power BI dashboard screenshot here**
-
-```markdown
-![Power BI Dashboard](images/dashboard.png)
+df.dropna(inplace=True)
 ```
 
 ---
 
-## 📈 Results & Key Insights
+## 📊 Exploratory Data Analysis
 
-The analysis generated several actionable business insights from the dataset.
+The analysis focused on understanding customer demographics and purchasing patterns.
 
-Examples of insights identified through the analysis include:
+### 1. Gender Analysis
 
-* High-performing categories/products contributed significantly to overall revenue.
-* Certain customer or regional segments showed stronger performance than others.
-* Sales trends revealed periods of higher and lower business activity.
-* Underperforming segments were identified for further investigation.
-* Customer and product-level analysis helped identify opportunities for improving business performance.
+The analysis compares the number of male and female buyers and their total spending.
 
-The insights were converted into **business recommendations** rather than focusing only on descriptive statistics.
+**Key finding:** Female customers represent the majority of buyers and contribute higher purchasing amounts compared with male customers.
+
+---
+
+### 2. Age Group Analysis
+
+Customer purchasing behavior was analyzed across different age groups.
+
+**Key finding:** Customers in the **26–35 age group** represent the largest buyer segment, with female customers particularly prominent in this group.
+
+---
+
+### 3. State-wise Analysis
+
+The project analyzed both the number of orders and total sales generated across different states.
+
+**Key finding:** **Uttar Pradesh, Maharashtra, and Karnataka** are among the leading states in terms of orders and total sales.
+
+---
+
+### 4. Marital Status Analysis
+
+Customer count and total sales were analyzed based on marital status and gender.
+
+**Key finding:** Married customers, particularly women, demonstrate strong purchasing power in the dataset.
+
+---
+
+### 5. Occupation Analysis
+
+The project examines customer distribution and total spending across different occupations.
+
+**Key finding:** Customers working in sectors such as **IT, Healthcare, and Aviation** represent important buyer segments.
+
+---
+
+### 6. Product Category Analysis
+
+Product categories were analyzed based on the number of products sold and total sales generated.
+
+**Key finding:** **Food, Clothing & Apparel, and Electronics & Gadgets** are among the leading product categories.
+
+---
+
+## 📈 Key Insights
+
+The analysis identified the following major customer characteristics:
+
+* Female customers form the largest buyer segment.
+* The **26–35 age group** represents a major portion of buyers.
+* **Uttar Pradesh, Maharashtra, and Karnataka** are key states in terms of orders and sales.
+* Married women demonstrate strong purchasing power.
+* Customers working in **IT, Healthcare, and Aviation** are important buyer segments.
+* **Food, Clothing & Apparel, and Electronics & Gadgets** are high-performing product categories.
 
 ---
 
 ## 💡 Business Recommendations
 
-Based on the analysis, potential recommendations include:
+Based on the analysis, businesses can consider the following strategies:
 
-1. Focus marketing efforts on high-performing products and customer segments.
-2. Investigate underperforming categories and regions.
-3. Use customer-level insights to improve retention and engagement.
-4. Monitor sales trends to improve planning and forecasting.
-5. Use dashboard KPIs for regular performance monitoring.
-6. Make data-driven decisions using insights from Python, SQL and Power BI.
-
----
-
-## 📄 Final Report
-
-A detailed report was prepared to document the complete analytical process.
-
-The report covers:
-
-* Business problem
-* Dataset description
-* Data preparation
-* Exploratory analysis
-* SQL analysis
-* Power BI dashboard
-* Key findings
-* Business insights
-* Recommendations
-* Conclusion
-
-> 📌 **Add your final report here:** `reports/Project_Report.pdf`
+1. **Target women customers** with personalized Diwali campaigns and promotional offers.
+2. Focus marketing campaigns on the **26–35 age group**.
+3. Increase promotional activities in high-performing states such as **Uttar Pradesh, Maharashtra, and Karnataka**.
+4. Develop targeted campaigns for customers working in **IT, Healthcare, and Aviation**.
+5. Promote high-demand categories such as **Food, Clothing & Apparel, and Electronics & Gadgets**.
+6. Use customer demographics to develop more personalized marketing campaigns.
 
 ---
 
-## ▶️ How to Run
+## 📊 Visualizations
 
-### Prerequisites
+The project includes multiple visualizations created using **Matplotlib and Seaborn**, including:
 
-Install the following:
+* Gender-wise customer count
+* Gender-wise total spending
+* Age group and gender analysis
+* Age group-wise sales
+* Top 10 states by orders
+* Top 10 states by sales
+* Marital status and gender analysis
+* Marital status-wise sales
+* Occupation-wise customer count
+* Occupation-wise sales
+* Product category-wise sales
+* Product category-wise product count
 
-* Python 3.x
-* Jupyter Notebook
-* MySQL Server
-* Power BI Desktop
-
-### Python Setup
-
-Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/your-repository.git
-cd your-repository
-```
-
-Install the required Python libraries:
-
-```bash
-pip install pandas numpy matplotlib seaborn
-```
-
-Open the Jupyter Notebook:
-
-```bash
-jupyter notebook
-```
-
-Run the notebook containing the data loading, cleaning and EDA steps.
-
-### MySQL
-
-1. Start MySQL Server.
-2. Create the required database.
-3. Import the cleaned dataset.
-4. Run the SQL queries provided in the `sql/` folder.
-
-Example:
-
-```sql
-CREATE DATABASE analytics_project;
-USE analytics_project;
-```
-
-### Power BI
-
-1. Open the `.pbix` file using Power BI Desktop.
-2. Update the data source if required.
-3. Refresh the dataset.
-4. Explore the interactive dashboard.
+These visualizations help convert raw sales data into easily interpretable business insights.
 
 ---
 
-## 📂 Project Structure
+## 🏁 Conclusion
+
+The analysis indicates that **married women aged 26–35 years**, particularly those from **Uttar Pradesh, Maharashtra, and Karnataka** and working in sectors such as **IT, Healthcare, and Aviation**, represent an important customer segment.
+
+The findings also show strong demand for **Food, Clothing & Apparel, and Electronics & Gadgets**.
+
+These insights can help businesses improve their **customer targeting, promotional campaigns, product planning, and sales strategies** during future festive seasons.
+
+---
+
+## 📁 Project Structure
 
 ```text
-data-analytics-project/
+Diwali-Sales-Analysis/
 │
 ├── data/
-│   ├── raw_dataset.csv
-│   └── cleaned_dataset.csv
+│   └── Diwali_Sales_Data.csv
 │
 ├── notebooks/
-│   └── data_analysis.ipynb
-│
-├── sql/
-│   └── analysis_queries.sql
-│
-├── powerbi/
-│   └── analytics_dashboard.pbix
-│
-├── reports/
-│   └── Project_Report.pdf
+│   └── Diwali_Sales_Analysis.ipynb
 │
 ├── images/
-│   └── dashboard.png
+│   └── charts/
 │
 ├── README.md
 └── requirements.txt
@@ -341,22 +238,53 @@ data-analytics-project/
 
 ---
 
-## 🎯 Skills Demonstrated
+## ▶️ How to Run the Project
 
-This project demonstrates practical experience in:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/Diwali-Sales-Analysis.git
+cd Diwali-Sales-Analysis
+```
+
+### 2. Install required libraries
+
+```bash
+pip install pandas numpy matplotlib seaborn jupyter
+```
+
+### 3. Launch Jupyter Notebook
+
+```bash
+jupyter notebook
+```
+
+### 4. Open the notebook
+
+Open:
+
+```text
+Diwali_Sales_Analysis.ipynb
+```
+
+Run the cells sequentially to reproduce the analysis.
+
+---
+
+## 🎓 Skills Demonstrated
+
+This project demonstrates practical skills in:
 
 * **Python**
 * **Pandas**
+* **NumPy**
 * **Data Cleaning**
-* **Exploratory Data Analysis**
+* **Exploratory Data Analysis (EDA)**
 * **Data Visualization**
-* **SQL**
-* **MySQL**
-* **Power BI**
-* **Business Intelligence**
-* **KPI Analysis**
-* **Business Reporting**
-* **Data-driven Decision Making**
+* **Customer Segmentation**
+* **Sales Analysis**
+* **Business Insights**
+* **Business Recommendations**
 
 ---
 
@@ -364,7 +292,13 @@ This project demonstrates practical experience in:
 
 **Somnath Mukherjee**
 
-Aspiring Data Analyst | Python | SQL | Excel | Power BI
+Aspiring Data Analyst
+**Python | SQL | Excel | Power BI | Data Analytics**
 
-This project demonstrates my ability to work with data across the complete analytics lifecycle — from **raw data to actionable business insights**.
+---
 
+## ⭐ Project Highlights
+
+> **Raw Data → Data Cleaning → EDA → Visualization → Business Insights → Recommendations**
+
+This project demonstrates the ability to transform a raw sales dataset into **meaningful business insights using Python-based data analytics**.
